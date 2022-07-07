@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project-login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+
+    .WrapperScreen {
+        min-width: 572px;
+        padding-left: 72px;
+      padding-right: 72px;
+    
+    }
+      
+      .LoginTitle {
+        font-size: 32px;
+        margin-top: 52px;
+    }
+    .join{
+      font-size:14px;
+      color:#E67800;
+      border:solid #E67800;
+    }
+    .button{
+      font-size:14px;
+      background-color:#E67800;
+    }
+    </style>
+    <script>
+        function email_check( email ) {    
+    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return (email != '' && email != 'undefined' && regex.test(email)); 
+}
+
+$("input[type=email]").blur(function(){
+  var email = $(this).val();
+  if( email == '' || email == 'undefined') return;
+  if(! email_check(email) ) {
+  	$(".result-email").text('올바른 이메일 형식을 입력해주세요');
+    $(this).focus();
+    return false;
+  }else {
+	$(".result-email").text('');
+  }
+});
+    </script>
+</head>
+<body>
+    <section class="login-page">
+        <div class="bg-gray-50 min-h-screen">
+          <div class="flex justify-center">
+            <div class="py-12 my-16 bg-white  rounded-lg WrapperScreen">
+              <!--로고~텍스트 공간-->
+              <div class="text">
+                <div><a href="https://projectlion.io/"><img src="https://auth.projectlion.io/static/img/projectlion_logo.svg" alt="logo" style="height: 34px;"></a>
+                </div>
+                <h2 class="mt-6 mb-2 font-bold LoginTitle">안녕하세요! 👋</h2>
+                <p class="text-xs lg:text-tiny">PROJECT LION에서 당신의 아이디어를 <br> 현실로 만들 수 있습니다.</p>
+              </div>
+              <!--아이디 비밀번호-->
+              <form method="post">
+                <div class="mt-12">
+                  <input type="email" placeholder="이메일" name="mail" id="mail" maxlength="30" class="w-428px border border-gray-00 rounded-lg block w-full py-3 px-4 mb-3 text-sm placeholder-gray-300 focus:outline-none focus:border-gray-600 focus:ring-0">
+                  <div>
+                    <div id="error_mail" class="result-email result-check decoration-red text-red-500 text-xs pb-3 ">
+                    </div>
+                  </div>
+                  <div class="relative">
+                    <ul>
+                      <input type="password" name="password" class=" border border-gray-300 rounded-lg py-3 pl-4  w-full text-sm placeholder-gray-300 focus:outline-none focus:border-gray-600 focus:ring-0" placeholder="비밀번호" value="">
+                      <li class="pt-3 flex space-x-2 items-center text-red-450">
+                        <i class="text-red-500 bg-white-500 fas fa-exclamation-circle"></i>
+                        <p class="text-red-500 text-xs ">비밀번호를 입력해주세요.</p>
+      
+                      </li>
+                    </ul>
+                    <button type="button" class="absolute outline-none" style="top: 15px; right: 18px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class=" w-5 h-auto text-gray-300">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+      
+                        </path>
+                      </svg></button>
+                  </div>
+                </div>
+                <div class=" mt-12">
+                 <a href="https://p.crmmii.com"> <button type="button" class="button flex justify-center py-3 items-center w-full rounded-lg outline-none"><span class="login text-white text-tiny font-semibold">로그인 하기</span> </button></a>
+                  <a href="https://pjoin.crmmii.com" class="mt-2 flex justify-center py-3 items-center w-full rounded-lg  border outline-none join">
+                    <span class="text-tiny font-semibold ">회원가입 하기</span>
+      
+                  </a>
+      
+                </div>
+              </form>
+              <!--찾기-->
+              <div class="mt-8 ">
+                <div class="flex justify-center items-center space-x-4">
+                  <a href="/users/find-user-email" class="text-xs text-gray-500 font-semibold outline-none">아이디 찾기</a>
+                  <span class="w-1 h-1 bg-gray-500 rounded-full"></span><a href="/users/reset-user-password" class="text-xs text-gray-500 font-semibold outline-none">비밀번호 찾기</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>

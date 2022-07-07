@@ -1,0 +1,22 @@
+
+
+.WrapperScreen {
+    min-width: 572px;
+    padding-left: 72px;
+  padding-right: 72px;
+
+}
+  
+  .LoginTitle {
+    font-size: 32px;
+    margin-top: 52px;
+}
+.join{
+  font-size:14px;
+  color:#E67800;
+  border:solid #E67800;
+}
+.button{
+  font-size:14px;
+  background-color:#E67800;
+}
